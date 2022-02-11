@@ -1,0 +1,32 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<form [formGroup]="formGroup" (submit)="formControl(formGroup)">
+  <div>
+    name: <input formControlName="name" />
+    <br />
+    <i
+      style="color: red;"
+      *ngIf="formGroup?.controls?.name?.errors?.required && 
+             formGroup?.controls?.name?.dirty "
+    >
+      istifadeci adi doldurulmalidi
+    </i>
+    <br />
+    <i
+      style="color: red;"
+      *ngIf="formGroup?.controls?.name?.errors?.minlength?.requiredLength && 
+           formGroup?.controls?.name?.touched"
+    >
+      istifadeci adi
+      {{formGroup?.controls?.name?.errors?.minlength?.requiredLength}}
+      karakterden az
+      {{formGroup?.controls?.name?.errors?.minlength?.requiredLength}}
+      karakterden chox olmamali hazirda
+      {{formGroup?.controls?.name?.errors?.minlength?.actualLength}}
+    </i>
+  </div>
+
+  <div>age: <input formControlName="age" /></div>
+  <div>
+    <button type="submit" [disabled]="!formGroup.valid">Submit</button>
+  </div>
+</form>
